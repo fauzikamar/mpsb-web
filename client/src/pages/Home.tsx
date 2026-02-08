@@ -1,5 +1,6 @@
 /**
  * Design Philosophy: Kinetic Futurism with Dimensional Depth
+ * Magnitude Power Sdn Bhd - Electrical Services & Transformer Solutions
  * - Layered depth through shadows, blurs, and glass-morphism
  * - Dynamic gradient backgrounds with animations
  * - 3D interactive elements with spring physics
@@ -12,15 +13,18 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
 import { 
-  Briefcase, 
-  Code, 
-  TrendingUp, 
-  HeadphonesIcon,
-  ArrowRight,
+  Zap,
+  Wrench,
+  CheckCircle,
+  Phone,
   Mail,
+  MapPin,
   Linkedin,
-  Twitter,
-  ChevronDown
+  Facebook,
+  ChevronDown,
+  ArrowRight,
+  Award,
+  Users
 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -44,10 +48,35 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-hidden">
+      {/* Navigation Bar */}
+      <nav className="fixed top-0 w-full z-50 glass-card border-b border-border/50">
+        <div className="container flex items-center justify-between h-16">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-2xl font-bold gradient-text"
+          >
+            MAGNITUDE POWER
+          </motion.div>
+          
+          <div className="hidden md:flex gap-8">
+            {["about", "services", "portfolio", "team", "contact"].map((item) => (
+              <button
+                key={item}
+                onClick={() => scrollToSection(item)}
+                className="text-muted-foreground hover:text-primary capitalize transition-colors duration-300"
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+        </div>
+      </nav>
+
       {/* Hero Section */}
       <section 
         id="hero" 
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
         style={{
           backgroundImage: `url('https://private-us-east-1.manuscdn.com/sessionFile/K9eX1rskNcJOiwQ0JQHEZ6/sandbox/w6HaRMQOMnow1zMQ7lcY0E-img-1_1770535604000_na1fn_aGVyby1iYWNrZ3JvdW5k.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvSzllWDFyc2tOY0pPaXdRMEpRSEVaNi9zYW5kYm94L3c2SGFSTVFPTW5vdzF6TVE3bGNZMEUtaW1nLTFfMTc3MDUzNTYwNDAwMF9uYTFmbl9hR1Z5YnkxaVlXTnJaM0p2ZFc1ay5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=CO1-0njpe8tEZcey5e~CSzgMzWTKbg7yCbFdG3RuZH-sArTzzIhYv9qWuNLuE9fs9NdmVAgIZKvqqfLMHq7okxpyD1QzwWLbnECw96GwtIzbyJDxehAXVYpRY858dzRLY6ZAdD0PL1-KsHwFn2SrV5k~-9A31SbvyLOJfV5F-WoF3kdN937yDaklkrmBgFuqQYcIC7PSRDyzkXKjs0D0viBFvpNnJC6efHToyZ5o0Cb4LmeoPH~GwxiZ8VMT3vaBwCsK-0Uhz8~PHNPkCB3td3DjX923bDDY8NwRhKVte-uSH62EQXSPdiSQpJVcoiddX5bQw4LQ4HJuQ6YHdZEg4Q__')`,
           backgroundSize: 'cover',
@@ -65,12 +94,12 @@ export default function Home() {
             className="max-w-4xl mx-auto text-center"
           >
             <motion.h1 
-              className="text-6xl md:text-8xl font-bold mb-6 gradient-text"
+              className="text-5xl md:text-7xl font-bold mb-6 gradient-text"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Empowering Your Business Growth
+              Powering Malaysia's Electrical Future
             </motion.h1>
             
             <motion.p 
@@ -79,21 +108,30 @@ export default function Home() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              We deliver innovative solutions for modern enterprises.
+              Leading provider of transformer services and electrical solutions for LV to HV (500kV)
             </motion.p>
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
+              className="flex flex-col md:flex-row gap-4 justify-center"
             >
               <Button 
                 size="lg" 
                 className="text-lg px-8 py-6 shadow-2xl shadow-primary/50 hover:shadow-primary/70 hover:scale-105 transition-all duration-300"
                 onClick={() => scrollToSection('contact')}
               >
-                Get Started
+                Get in Touch
                 <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="text-lg px-8 py-6"
+                onClick={() => scrollToSection('services')}
+              >
+                Our Services
               </Button>
             </motion.div>
           </motion.div>
@@ -117,15 +155,69 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-4xl mx-auto"
           >
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 gradient-text">About Us</h2>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              We are a forward-thinking company committed to excellence and innovation. 
-              Our team of experts brings decades of combined experience to help businesses 
-              navigate the complexities of the modern digital landscape. We believe in 
-              creating lasting partnerships built on trust, transparency, and measurable results.
-            </p>
+            <h2 className="text-5xl md:text-6xl font-bold mb-8 gradient-text">About Magnitude Power</h2>
+            
+            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <p>
+                Incorporated on 1 April 2011, Magnitude Power Sdn Bhd is an established electrical equipment supplier and services company specializing in transformer solutions and electrical services. We operate across the full spectrum of electrical voltages, from Low Voltage (LV) to High Voltage (HV) systems up to 500kV.
+              </p>
+              
+              <p>
+                As an authorized contractor for Malaysia Transformer Manufacturing Sdn Bhd (a subsidiary of Tenaga Nasional Berhad), we are registered with both the Ministry of Finance (MOF) and TNB. Our expertise spans installation, servicing, testing, and commissioning of power transformers for the Malaysian power industry.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                {[
+                  { label: "Years Active", value: "14+" },
+                  { label: "Paid Capital", value: "MYR 1.2M" },
+                  { label: "Finance Facility", value: "MYR 5M" }
+                ].map((stat, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="glass-card p-6 text-center"
+                  >
+                    <p className="text-3xl font-bold gradient-text mb-2">{stat.value}</p>
+                    <p className="text-muted-foreground">{stat.label}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                  <Award className="text-primary" />
+                  Our Vision
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  To be among the leading electrical services providers in Malaysia, delivering innovative solutions with excellence and reliability.
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                  <Zap className="text-primary" />
+                  Our Mission
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Providing Malaysia's power industry with quality products and services that are affordable, efficient, and reliable.
+                </p>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -141,34 +233,46 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-5xl md:text-6xl font-bold mb-4 gradient-text">Our Services</h2>
-            <p className="text-lg text-muted-foreground">Comprehensive solutions tailored to your needs</p>
+            <p className="text-lg text-muted-foreground">Comprehensive electrical solutions for power distribution and transformer management</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                icon: Briefcase,
-                title: "Business Consulting",
-                description: "Strategic guidance to transform your business operations and drive growth.",
-                image: "https://private-us-east-1.manuscdn.com/sessionFile/K9eX1rskNcJOiwQ0JQHEZ6/sandbox/w6HaRMQOMnow1zMQ7lcY0E-img-2_1770535602000_na1fn_c2VydmljZXMtY29uc3VsdGluZw.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvSzllWDFyc2tOY0pPaXdRMEpRSEVaNi9zYW5kYm94L3c2SGFSTVFPTW5vdzF6TVE3bGNZMEUtaW1nLTJfMTc3MDUzNTYwMjAwMF9uYTFmbl9jMlZ5ZG1salpYTXRZMjl1YzNWc2RHbHVady5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=UTxjKDcwCX32v0SoTh74GJvdkYsXcaUQFrSRJBfgSN2ZvGRt8a6Kg7nOJLMyaARlPpAW2KpvvqMgy9acS95J4OgvSSrmyYrp0maoVYeQ9OTi0SufRqwOZzoOGTKU0XS~RKR42hV8vYP75JLAtcEoviEaf6Ep9N~cS-skTVbt3KUKB5MF8aqulRvcFvyLPjIhdv11iVyLcQwiA7zv0-qm84AIisoql01ZFO88AyE4biiiWbCjpDlg7e1znukgDCN0F2uhW3fvuE~CAgRgqimg1hEMGB1K6aCFLxEMk67EI7H6uc2obGcKjMbO0WqxLgYCisLajaY7xQHBIMSvLdXF5g__"
+                icon: Zap,
+                title: "Power Transformers",
+                description: "Supply of Oil Immersed Power Transformers up to 500kV for high-capacity power distribution.",
+                voltage: "Up to 500kV"
               },
               {
-                icon: Code,
-                title: "Technology Solutions",
-                description: "Cutting-edge technology implementations that scale with your business.",
-                image: "https://private-us-east-1.manuscdn.com/sessionFile/K9eX1rskNcJOiwQ0JQHEZ6/sandbox/w6HaRMQOMnow1zMQ7lcY0E-img-3_1770535601000_na1fn_c2VydmljZXMtdGVjaG5vbG9neQ.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvSzllWDFyc2tOY0pPaXdRMEpRSEVaNi9zYW5kYm94L3c2SGFSTVFPTW5vdzF6TVE3bGNZMEUtaW1nLTNfMTc3MDUzNTYwMTAwMF9uYTFmbl9jMlZ5ZG1salpYTXRkR1ZqYUc1dmJHOW5lUS5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=BmFqj3ZlDsbxNuVRtbW4LQtT7-Rs4loBojkwVIMbdjNZihglSSadUVaEPSZrFIDlYUg5Y~vxRM14an82IwfrQL881fQw-JIyaiwl-MZafaariNqDZQBU6MoRV9Gy011lBaKJ4-cl~Lv8C5j6o7YBMF5K47XCjMDh6nO8FQFsxz8DS~sIrE9I0WH9v6Qy-Xhww8L2RjyjJUIEI4P-BgWfbwxE0aNjAuR8SwWxT-bdVAGU~hI7byx~XyeEFLaAbDT3k2TPlQ5YJODIPXNiOvs-Jv2QpLMGIT7Zt8xHlf51RcHkYfiM5E7nAwJx1Jj0PxiLz1Py3TBQ1LRZUBDfBrWyOg__"
+                icon: Wrench,
+                title: "Distribution Transformers",
+                description: "Oil and dry-type distribution transformers for medium and low voltage applications.",
+                voltage: "Up to 36kV"
               },
               {
-                icon: TrendingUp,
-                title: "Market Analysis",
-                description: "Data-driven insights to help you make informed strategic decisions.",
-                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                icon: CheckCircle,
+                title: "Switchgear Solutions",
+                description: "High voltage switchgear (VCB & GIS) for reliable power switching and protection.",
+                voltage: "Up to 275kV"
               },
               {
-                icon: HeadphonesIcon,
-                title: "Customer Support",
-                description: "24/7 dedicated support to ensure your success every step of the way.",
-                image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&q=80"
+                icon: Wrench,
+                title: "Transformer Repair",
+                description: "Professional repair and refurbishment services for power and distribution transformers.",
+                voltage: "All Ratings"
+              },
+              {
+                icon: CheckCircle,
+                title: "Installation & Testing",
+                description: "Complete installation, testing, and commissioning services for transformer systems.",
+                voltage: "All Ratings"
+              },
+              {
+                icon: Zap,
+                title: "Accessories Supply",
+                description: "High-quality accessories including radiators, bushings, and transformer guards.",
+                voltage: "All Types"
               }
             ].map((service, index) => (
               <motion.div
@@ -184,14 +288,11 @@ export default function Home() {
                 }}
               >
                 <Card className="glass-card h-full overflow-hidden group shadow-2xl hover:shadow-primary/30 transition-all duration-300">
-                  <div 
-                    className="h-48 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                    style={{ backgroundImage: `url('${service.image}')` }}
-                  />
                   <CardContent className="p-6">
                     <service.icon className="h-12 w-12 mb-4 text-primary" />
                     <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
-                    <p className="text-muted-foreground">{service.description}</p>
+                    <p className="text-muted-foreground mb-4">{service.description}</p>
+                    <p className="text-sm text-primary font-semibold">{service.voltage}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -210,49 +311,40 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl md:text-6xl font-bold mb-4 gradient-text">Our Work</h2>
-            <p className="text-lg text-muted-foreground">Showcasing excellence in every project</p>
+            <h2 className="text-5xl md:text-6xl font-bold mb-4 gradient-text">Certifications & Registrations</h2>
+            <p className="text-lg text-muted-foreground">Authorized and certified by leading regulatory bodies</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {[
               {
-                title: "Enterprise Digital Transformation",
-                category: "Technology",
-                image: "https://private-us-east-1.manuscdn.com/sessionFile/K9eX1rskNcJOiwQ0JQHEZ6/sandbox/w6HaRMQOMnow1zMQ7lcY0E-img-4_1770535602000_na1fn_cG9ydGZvbGlvLWFic3RyYWN0LTE.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvSzllWDFyc2tOY0pPaXdRMEpRSEVaNi9zYW5kYm94L3c2SGFSTVFPTW5vdzF6TVE3bGNZMEUtaW1nLTRfMTc3MDUzNTYwMjAwMF9uYTFmbl9jRzl5ZEdadmJHbHZMV0ZpYzNSeVlXTjBMVEUucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=KuoKs0ZvACKKQDN7nw5oX0dK~7mUoHVo6EQ5wvB75gxHsHAKoHjMiQfEZIKbqSt1vteXh-SIhXyklfBeQwYry1XKCwVZmY5KdRO89KiqxJyMsiWp-OZQj-KKpd7pq2uTTU3ce~hz7ZliNYuvvoStQLqhF~ApyjJq9VzsdE~ic9ODfXhz9SNr3Ep3X8RmQexrAOxRrSkEysDxq95SfalMKlXckaBVGydMphlP8woq2os3O91CkUoioNjmvc6z1YiTD3F4knZlOamIvsPfKDzoY4zieRMRHGPbQlI7b2p0Ra0VKp67Jo8gHj5W9g4PijG8C97wTuT6J8-jmCR7fyNL9Q__"
+                title: "Ministry of Finance",
+                reg: "MOF Reg. No.: 357-02171732",
+                desc: "Registered as electrical equipment supplier and distributor"
               },
               {
-                title: "Global Market Expansion",
-                category: "Strategy",
-                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+                title: "CIDB Registration",
+                reg: "CIDB Reg. No.: 0120121206-SL147346",
+                desc: "Construction Industry Development Board certification"
               },
               {
-                title: "Cloud Infrastructure Modernization",
-                category: "Technology",
-                image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
+                title: "TNB Authorization",
+                reg: "TNB Reg. No.: 3041449",
+                desc: "Authorized contractor for Malaysia Transformer Manufacturing"
               }
-            ].map((project, index) => (
+            ].map((cert, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ 
-                  scale: 1.05,
-                  rotateZ: 2,
-                  transition: { duration: 0.3 }
-                }}
               >
-                <Card className="glass-card overflow-hidden group cursor-pointer shadow-2xl hover:shadow-primary/30 transition-all duration-300">
-                  <div 
-                    className="h-64 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                    style={{ backgroundImage: `url('${project.image}')` }}
-                  />
-                  <CardContent className="p-6">
-                    <p className="text-sm text-primary mb-2">{project.category}</p>
-                    <h3 className="text-2xl font-bold">{project.title}</h3>
-                  </CardContent>
+                <Card className="glass-card p-8 shadow-2xl hover:shadow-primary/30 transition-all duration-300 h-full">
+                  <Award className="h-12 w-12 text-primary mb-4" />
+                  <h3 className="text-2xl font-bold mb-2">{cert.title}</h3>
+                  <p className="text-primary font-semibold mb-3">{cert.reg}</p>
+                  <p className="text-muted-foreground">{cert.desc}</p>
                 </Card>
               </motion.div>
             ))}
@@ -260,8 +352,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-24 relative">
+      {/* Team Section */}
+      <section id="team" className="py-24 relative">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -270,25 +362,35 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl md:text-6xl font-bold mb-4 gradient-text">What Clients Say</h2>
-            <p className="text-lg text-muted-foreground">Trusted by industry leaders worldwide</p>
+            <h2 className="text-5xl md:text-6xl font-bold mb-4 gradient-text">Leadership Team</h2>
+            <p className="text-lg text-muted-foreground">Experienced professionals with decades of industry expertise</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {[
               {
-                name: "Jane Doe",
-                role: "CEO, Tech Innovations Inc.",
-                feedback: "Their solutions transformed our business. The team's expertise and dedication are unmatched. We've seen a 300% increase in efficiency since partnering with them.",
-                avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80"
+                name: "Abu Bakar Endin",
+                role: "Director & Founder",
+                qualification: "Diploma of Electrical Engineering (ITM-1982)",
+                experience: "30+ years in transformer manufacturing and sales",
+                highlights: [
+                  "Sales Manager at Malaysia Transformer Manufacturing S/B (1984-1999)",
+                  "Sales Director at Pakatan Engineering S/B (2007-2010)",
+                  "General Manager at Zanwa Transformer (2010-2011)"
+                ]
               },
               {
-                name: "John Smith",
-                role: "CTO, Global Enterprises",
-                feedback: "Professional, reliable, and innovative. They delivered beyond our expectations and continue to provide exceptional support. A true partner in our digital journey.",
-                avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80"
+                name: "Sayaidina Hamzah Che Harun",
+                role: "Managing Director",
+                qualification: "Degree of Electrical Engineering (UTM-2005)",
+                experience: "18+ years in transformer production and operations",
+                highlights: [
+                  "Production Engineer at Zanwa Transformer (2005-2006)",
+                  "Head of Production at Zanwa Transformer (2006-2009)",
+                  "Factory Operation & Project Manager (2009-2011)"
+                ]
               }
-            ].map((testimonial, index) => (
+            ].map((member, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
@@ -297,20 +399,25 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
               >
                 <Card className="glass-card p-8 shadow-2xl hover:shadow-primary/30 transition-all duration-300">
-                  <div className="flex items-start gap-4 mb-4">
-                    <img 
-                      src={testimonial.avatar} 
-                      alt={testimonial.name}
-                      className="w-16 h-16 rounded-full object-cover ring-2 ring-primary"
-                    />
+                  <div className="flex items-center gap-4 mb-4">
+                    <Users className="h-12 w-12 text-primary" />
                     <div>
-                      <h3 className="text-xl font-bold">{testimonial.name}</h3>
-                      <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                      <h3 className="text-2xl font-bold">{member.name}</h3>
+                      <p className="text-primary font-semibold">{member.role}</p>
                     </div>
                   </div>
-                  <p className="text-lg text-muted-foreground italic leading-relaxed">
-                    "{testimonial.feedback}"
-                  </p>
+                  
+                  <p className="text-sm text-muted-foreground mb-3">{member.qualification}</p>
+                  <p className="text-muted-foreground mb-4">{member.experience}</p>
+                  
+                  <div className="space-y-2">
+                    {member.highlights.map((highlight, idx) => (
+                      <p key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                        {highlight}
+                      </p>
+                    ))}
+                  </div>
                 </Card>
               </motion.div>
             ))}
@@ -340,64 +447,124 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-5xl md:text-6xl font-bold mb-4 gradient-text">Get in Touch</h2>
-            <p className="text-lg text-muted-foreground">Let's discuss how we can help your business thrive</p>
+            <p className="text-lg text-muted-foreground">Contact us for inquiries about our services</p>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl mx-auto"
-          >
-            <Card className="glass-card p-8 shadow-2xl">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium mb-2">Name</label>
-                  <Input
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    required
-                    className="bg-background/50 border-border"
-                    placeholder="Your name"
-                  />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="space-y-6"
+            >
+              <Card className="glass-card p-6 shadow-2xl">
+                <div className="flex items-start gap-4">
+                  <MapPin className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-bold mb-2">Address</h3>
+                    <p className="text-muted-foreground">
+                      No.18, Jalan Seksyen 2/17<br />
+                      Taman Kajang Utama<br />
+                      43000 Kajang, Selangor<br />
+                      Malaysia
+                    </p>
+                  </div>
                 </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-2">Email</label>
-                  <Input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    required
-                    className="bg-background/50 border-border"
-                    placeholder="your.email@example.com"
-                  />
+              </Card>
+
+              <Card className="glass-card p-6 shadow-2xl">
+                <div className="flex items-start gap-4">
+                  <Phone className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-bold mb-2">Phone</h3>
+                    <p className="text-muted-foreground">
+                      Tel: 603-8740 1061<br />
+                      Fax: 603-8734 0070
+                    </p>
+                  </div>
                 </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-2">Message</label>
-                  <Textarea
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    required
-                    className="bg-background/50 border-border min-h-[150px]"
-                    placeholder="Tell us about your project..."
-                  />
+              </Card>
+
+              <Card className="glass-card p-6 shadow-2xl">
+                <div className="flex items-start gap-4">
+                  <Mail className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-bold mb-2">Email</h3>
+                    <a href="mailto:magnitudepower@gmail.com" className="text-primary hover:underline">
+                      magnitudepower@gmail.com
+                    </a>
+                  </div>
                 </div>
-                
-                <Button 
-                  type="submit" 
-                  size="lg" 
-                  className="w-full text-lg shadow-xl shadow-primary/50 hover:shadow-primary/70 hover:scale-105 transition-all duration-300"
-                >
-                  Send Message
-                  <Mail className="ml-2 h-5 w-5" />
-                </Button>
-              </form>
-            </Card>
-          </motion.div>
+              </Card>
+
+              <div className="flex gap-4">
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Facebook className="h-6 w-6" />
+                </a>
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Linkedin className="h-6 w-6" />
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <Card className="glass-card p-8 shadow-2xl">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Name</label>
+                    <Input
+                      type="text"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      required
+                      className="bg-background/50 border-border"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Email</label>
+                    <Input
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      required
+                      className="bg-background/50 border-border"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Message</label>
+                    <Textarea
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      required
+                      className="bg-background/50 border-border min-h-[150px]"
+                      placeholder="Tell us about your inquiry..."
+                    />
+                  </div>
+                  
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full text-lg shadow-xl shadow-primary/50 hover:shadow-primary/70 hover:scale-105 transition-all duration-300"
+                  >
+                    Send Message
+                    <Mail className="ml-2 h-5 w-5" />
+                  </Button>
+                </form>
+              </Card>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -405,15 +572,18 @@ export default function Home() {
       <footer className="py-12 border-t border-border/50">
         <div className="container">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-muted-foreground">
-              © 2026 Corporate Inc. All rights reserved.
-            </p>
+            <div>
+              <p className="text-2xl font-bold gradient-text mb-2">MAGNITUDE POWER</p>
+              <p className="text-muted-foreground text-sm">
+                © 2025 Magnitude Power Sdn Bhd (938838-M). All rights reserved.
+              </p>
+            </div>
             
             <div className="flex gap-6">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
                 Privacy Policy
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
                 Terms of Service
               </a>
             </div>
@@ -422,16 +592,16 @@ export default function Home() {
               <a 
                 href="#" 
                 className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform duration-300"
-                aria-label="LinkedIn"
+                aria-label="Facebook"
               >
-                <Linkedin className="h-6 w-6" />
+                <Facebook className="h-6 w-6" />
               </a>
               <a 
                 href="#" 
                 className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform duration-300"
-                aria-label="Twitter"
+                aria-label="LinkedIn"
               >
-                <Twitter className="h-6 w-6" />
+                <Linkedin className="h-6 w-6" />
               </a>
             </div>
           </div>
