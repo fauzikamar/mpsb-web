@@ -1,8 +1,9 @@
 {
   "buildCommand": "pnpm build",
-  "outputDirectory": ".",
+  "outputDirectory": "dist",
   "installCommand": "pnpm install",
   "framework": "vite",
+  "nodeVersion": "20.x",
   "env": {
     "NODE_ENV": "production"
   }
