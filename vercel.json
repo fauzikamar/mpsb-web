@@ -1,0 +1,9 @@
+{
+  "buildCommand": "pnpm build",
+  "outputDirectory": ".",
+  "installCommand": "pnpm install",
+  "framework": "vite",
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
